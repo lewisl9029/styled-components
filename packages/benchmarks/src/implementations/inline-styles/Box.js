@@ -5,12 +5,12 @@ import View from './View';
 const Box = ({ color, fixed = false, layout = 'column', outer = false, ...other }) => (
   <View
     {...other}
-    style={{
+    style={React.useMemo(() => ({
       ...styles[`color${color}`],
       ...(fixed && styles.fixed),
       ...(layout === 'row' && styles.row),
       ...(outer && styles.outer)
-    }}
+    }), [color, fixed, layout, outer])}
   />
 );
 

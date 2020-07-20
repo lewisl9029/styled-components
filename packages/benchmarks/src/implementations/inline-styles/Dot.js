@@ -3,7 +3,7 @@ import React from 'react';
 
 const Dot = ({ size, x, y, children, color }) => (
   <div
-    style={{
+    style={React.useMemo(() => ({
       ...styles.root,
       ...{
         borderBottomColor: color,
@@ -13,7 +13,7 @@ const Dot = ({ size, x, y, children, color }) => (
         marginLeft: `${x}px`,
         marginTop: `${y}px`
       }
-    }}
+    }), [color, size, x, y])}
   >
     {children}
   </div>

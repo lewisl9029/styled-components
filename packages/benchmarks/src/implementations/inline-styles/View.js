@@ -9,11 +9,9 @@ const compose = (s1, s2) => {
   }
 };
 
-class View extends React.Component {
-  render() {
-    const { style, ...other } = this.props;
-    return <div {...other} style={compose(viewStyle, style)} />;
-  }
+function View(props) {
+    const { style, ...other } = props;
+    return <div {...other} style={React.useMemo(() => compose(viewStyle, style), [style, viewStyle])} />;
 }
 
 const viewStyle = {
